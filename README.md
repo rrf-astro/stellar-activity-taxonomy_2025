@@ -31,7 +31,7 @@ Você precisará de **Python 3** e do **Jupyter Notebook** instalados. As princi
 
 1.  Clone este repositório:
     ```bash
-    git clone [https://github.com/rrf-astro/stellar-activity-taxonomy.git](https://github.com/rrf-astro/stellar-activity-taxonomy.git)
+    git clone [https://github.com/rrf-astro/stellar-activity-taxonomy_2025.git](https://github.com/rrf-astro/stellar-activity-taxonomy_2025.git)
     cd stellar-activity-taxonomy
     ```
 
