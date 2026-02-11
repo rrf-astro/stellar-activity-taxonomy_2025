@@ -63,4 +63,4 @@ If you use this data or code in your research, please cite the original work:
 For questions or collaborations, please contact via GitHub profile or institutional email.
 
 ---
-**Developed by [rrf-astro](https://github.com/rrf-astro)**
+
