@@ -1,0 +1,86 @@
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║       STELLAR ACTIVITY PIPELINE — METRICS REPORT                            ║
+║       Generated: 2026-02-22 22:07                                         ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+── DATA ─────────────────────────────────────────────────────────────────────
+  N input (table3.csv unique stars)   : ???
+  N after outlier removal (S<2.0)    : ???
+  N outliers removed                 : ???
+
+── K-MEANS (8D feature space) ───────────────────────────────────────────────
+  k optimal                          : ???
+  Cluster 0 (Inactive)               : ??? stars
+  Cluster 1 (Active)                 : ??? stars  (83.1%)
+  Silhouette Score   (k=2)           : 0.6106
+  Davies-Bouldin     (k=2)           : 0.7255
+  Calinski-Harabász  (k=2)           : 600.1
+
+── HDBSCAN (UMAP 2D manifold) ───────────────────────────────────────────────
+  N clusters found                   : ???
+  N noise (transition candidates)    : ???  (6.1%)
+
+── UMAP SENSITIVITY ─────────────────────────────────────────────────────────
+  n_neighbors tested                 : [5, 15, 30, 50]
+  Silhouette (mean ± range)          : 0.611 ± 0.0000
+  Davies-Bouldin (mean ± range)      : 0.726 ± 0.0000
+
+── ABLATION STUDY (6D vs 8D, k=2) ──────────────────────────────────────────
+  Silhouette 6D / 8D                 : 0.6106 / 0.6106
+  Davies-Bouldin 6D / 8D             : 0.7255 / 0.7255
+  Adjusted Rand Index                : 1.0000
+
+── BOOTSTRAP STABILITY (n=200) ──────────────────────────────────────────────
+  Score on full sample               : ???
+  Peak 2 (active represented) median : ???  95%CI [???, ???]
+  Peak 1 (active absent)     median  : ???  95%CI [???, ???]
+  Fraction of samples in Peak 2      : ???%
+
+── FGK SUBSET ───────────────────────────────────────────────────────────────
+  N FGK stars retained               : 626
+  N additional stars removed         : 0
+  Optimal k (FGK only)               : 2
+  Silhouette at optimal k            : 0.611
+
+── KRUSKAL-WALLIS (cluster separation) ──────────────────────────────────────
+  mean S-index                       : p = 2.25e-58
+  std S-index                        : p = 9.89e-59
+  amplitude_p95_p5                   : p = 1.36e-58
+
+═════════════════════════════════════════════════════════════════════════════
+  [MANUSCRIPT SNIPPETS — copy-paste ready]
+═════════════════════════════════════════════════════════════════════════════
+
+ABSTRACT / SEC 2 (sample size):
+  "...applied to ??? solar-type stars from the California Legacy Survey..."
+  "(??? extreme late-type outliers with mean S-index > 2.0 were excluded)"
+
+SEC 2.5.1 (clustering metrics):
+  "The pipeline converges to k=??? clusters (Silhouette Score = 0.6106,
+   Davies-Bouldin Index = 0.7255, Calinski-Harabász Index = 600.1)."
+
+SEC 3.1 (cluster sizes):
+  "Cluster 0 (inactive branch): N=??? stars (16.9%)
+   Cluster 1 (active branch):   N=??? stars (83.1%)"
+
+SEC 3.3 (HDBSCAN):
+  "HDBSCAN identified ??? cluster cores and ??? noise
+   points (6.1% of the sample), interpreted as transition candidates."
+
+SEC 4.3 (sensitivity):
+  "The Silhouette Score (0.611 ± 0.0000) and Davies-Bouldin Index (0.726 ± 0.0000)
+   are invariant across n_neighbors ∈ [5, 15, 30, 50]."
+
+SEC 4.3 (ablation):
+  "The 6D and 8D solutions agree with ARI = 1.0000 at k=2 (Sil_6D=0.6106,
+   Sil_8D=0.6106), confirming that the LS features add no discriminative
+   information."
+
+SEC 4.3 (bootstrap):
+  "When bootstrap samples adequately represent the active cluster, the median
+   Silhouette Score is ??? (95% CI [???, ???])."
+
+SEC 4.3 (FGK subset):
+  "Restricted to FGK-type stars (N=626), the optimal k shifts to 2
+   (Silhouette = 0.611), suggesting internal substructure in the active branch."
